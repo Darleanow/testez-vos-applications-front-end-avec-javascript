@@ -7,7 +7,7 @@ import { router } from "./index";
 import { getByTestId } from "@testing-library/dom";
 
 describe("Router Test Suites", () => {
-  it("Renders the sign in page", async () => {
+  it("Test Renders the sign in page", async () => {
     document.body.innerHTML = `
             <div id="root"></div>
         `;
@@ -19,7 +19,7 @@ describe("Router Test Suites", () => {
     );
   });
 
-  it("Renders the home page", async () => {
+  it("Test Renders the home page", async () => {
     document.body.innerHTML = `
             <div id="root"></div>
         `;
@@ -32,7 +32,7 @@ describe("Router Test Suites", () => {
     );
   });
 
-  it("Renders the facade_details page", async () => {
+  it("Test Renders the facade_details page", async () => {
     document.body.innerHTML = `
             <div id="root"></div>
         `;
@@ -45,7 +45,7 @@ describe("Router Test Suites", () => {
     );
   });
 
-  it("Renders the Add sensor page", async () => {
+  it("Test Renders the Add sensor page", async () => {
     document.body.innerHTML = `
             <div id="root"></div>
         `;
