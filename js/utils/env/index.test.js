@@ -1,13 +1,11 @@
-import { isInTestEnv } from './index'
+const { isInTestEnv } = require("./index");
 
-
-describe('Env Utils Unit Test Suite', () => {
-    it('should be in test env', () => {
-        expect(isInTestEnv()).toBe(true)
-    })
-    
-    it('should not be in test env', () => {
-        process.env.NODE_ENV = 'dev'
-        expect(isInTestEnv()).not.toBe(true)
-    })
-})
+describe("Test suite for test env", () => {
+  it("Is true when in test env", () => {
+    expect(isInTestEnv()).toBe(true);
+  });
+  it("Expect false if env isnt test", () => {
+    process.env.NODE_ENV = "dev";
+    expect(isInTestEnv()).toBe(false);
+  });
+});
