@@ -17,3 +17,14 @@ describe('Test suite for Pagination', () => {
         expect(Pagination.getNumberOfPages(34)).toBe(5);
     });
 })
+
+describe('Test suite for Pagination render method', () => {
+    it('Test if correct HTML is rendered for a given number of sensors', () => {
+        // Assuming ITEMS_PER_PAGE is known (e.g., 8)
+        const htmlOutput = Pagination.render(16); // Should create 2 pages
+        const numOfListItems = (htmlOutput.match(/<li/g) || []).length;
+        expect(numOfListItems).toBe(2);
+        // Additional checks can be added here to validate the structure of the HTML string
+    });
+});
+

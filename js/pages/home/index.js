@@ -1,18 +1,18 @@
-import Header from '../common/header/index.js'
-import Pagination from '../common/pagination/index.js'
+import Header from "../common/header/index.js";
+import Pagination from "../common/pagination/index.js";
 
-import { retrieveSensorsData } from '../../utils/api/sensorsApi/index.js'
+import { retrieveSensorsData } from "../../utils/api/sensorsApi/index.js";
 
-import { ITEMS_PER_PAGE } from '../../constants.js'
+import { ITEMS_PER_PAGE } from "../../constants.js";
 
 const Home = {
-    offset: 0,
-    sensors: null,
-    renderSensorsCard: sensors => {
-        let $sensorsWrapper = '<div class="sensors-wrapper">'
-        
-        for (let i = Home.offset; i < ITEMS_PER_PAGE + Home.offset; i++) {
-            $sensorsWrapper += `
+  offset: 0,
+  sensors: null,
+  renderSensorsCard: (sensors) => {
+    let $sensorsWrapper = '<div class="sensors-wrapper">';
+
+    for (let i = Home.offset; i < ITEMS_PER_PAGE + Home.offset; i++) {
+      $sensorsWrapper += `
                 <div class="sensor-card">
                     <img
                         class="sensor-img"
@@ -32,18 +32,18 @@ const Home = {
                         </a>
                     </div>
                 </div>
-            `
-        }
+            `;
+    }
 
-        $sensorsWrapper += '</div>'
-        return $sensorsWrapper
-    },
+    $sensorsWrapper += "</div>";
+    return $sensorsWrapper;
+  },
 
-    render: async () => {
-        const sensors = await retrieveSensorsData()
-        Home.sensors = sensors
+  render: async () => {
+    const sensors = await retrieveSensorsData();
+    Home.sensors = sensors;
 
-        return await `
+    return await `
             <div class="home-page">
                 <div class="home-page-main-wrapper">
                     ${Header.render()}
@@ -56,19 +56,19 @@ const Home = {
                     </main>
                 </div>
             </div>
-        `
-    },
+        `;
+  },
 
-    onChangePage: async offset => {
-        Home.offset = offset
+  onChangePage: async (offset) => {
+    Home.offset = offset;
 
-        const $sensorsWrapper = document.querySelector('.sensors-wrapper')
-        $sensorsWrapper.innerHTML = ''
+    const $sensorsWrapper = document.querySelector(".sensors-wrapper");
+    $sensorsWrapper.innerHTML = "";
 
-        document.querySelector('#root').innerHTML = await Home.render()
-        
-        Pagination.handlePagination()
-    }
-}
+    document.querySelector("#root").innerHTML = await Home.render();
 
-export default Home
+    Pagination.handlePagination();
+  },
+};
+
+export default Home;
