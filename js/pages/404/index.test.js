@@ -19,7 +19,7 @@ describe('Header Component', () => {
     // Test to ensure the error title is rendered correctly
     it('should correctly render the error title', () => {
         // Verifying the presence of the error title in h1 tag
-        expect(renderedOutput).toContain('<h1>Error Page</h1>');
+        expect(renderedOutput).toContain('<h1 data-testid="error-page-title">Error Page</h1>');
     });
 
     // Test to verify if the error message is rendered correctly
