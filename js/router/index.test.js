@@ -6,55 +6,57 @@ import "@testing-library/jest-dom";
 import { router } from "./index";
 import { getByTestId } from "@testing-library/dom";
 
+// Test suite for the router functionality
 describe("Router Test Suites", () => {
-  it("Test Renders the sign in page", async () => {
-    document.body.innerHTML = `
-            <div id="root"></div>
-        `;
 
-    await router();
+    // Test to verify the rendering of the sign-in page
+    it("should render the sign-in page correctly", async () => {
+        // Setting up the DOM environment for the test
+        document.body.innerHTML = `<div id="root"></div>`;
 
-    expect(getByTestId(document.body, "sign-in-form-title")).toHaveTextContent(
-      "Veuillez vous connecter"
-    );
-  });
+        // Calling the router function
+        await router();
 
-  it("Test Renders the home page", async () => {
-    document.body.innerHTML = `
-            <div id="root"></div>
-        `;
-    document.location = "/#/home";
+        // Expecting the sign-in form title to match the specific text
+        expect(getByTestId(document.body, "sign-in-form-title")).toHaveTextContent("Veuillez vous connecter");
+    });
 
-    await router();
+    // Test to verify the rendering of the home page
+    it("should render the home page correctly", async () => {
+        // Setting up the DOM and URL for the home page
+        document.body.innerHTML = `<div id="root"></div>`;
+        document.location = "/#/home";
 
-    expect(getByTestId(document.body, "home-sensors-title")).toHaveTextContent(
-      "Vos capteurs"
-    );
-  });
+        // Calling the router function
+        await router();
 
-  it("Test Renders the facade_details page", async () => {
-    document.body.innerHTML = `
-            <div id="root"></div>
-        `;
-    document.location = "/#/facade-details";
+        // Expecting the home page title to match the specific text
+        expect(getByTestId(document.body, "home-sensors-title")).toHaveTextContent("Vos capteurs");
+    });
 
-    await router();
+    // Test to verify the rendering of the facade_details page
+    it("should render the facade_details page correctly", async () => {
+        // Setting up the DOM for the facade_details page
+        document.body.innerHTML = `<div id="root"></div>`;
+        document.location = "/#/facade-details";
 
-    expect(getByTestId(document.body, "sensor-detail-title")).toHaveTextContent(
-      "Détails du capteur"
-    );
-  });
+        // Calling the router function
+        await router();
 
-  it("Test Renders the Add sensor page", async () => {
-    document.body.innerHTML = `
-            <div id="root"></div>
-        `;
-    document.location = "/#/add-sensor";
+        // Expecting the sensor detail title to match the specific text
+        expect(getByTestId(document.body, "sensor-detail-title")).toHaveTextContent("Détails du capteur");
+    });
 
-    await router();
+    // Test to verify the rendering of the Add sensor page
+    it("should render the Add sensor page correctly", async () => {
+        // Setting up the DOM and URL for the Add sensor page
+        document.body.innerHTML = `<div id="root"></div>`;
+        document.location = "/#/add-sensor";
 
-    expect(getByTestId(document.body, "add-sensor-title")).toHaveTextContent(
-      "Ajout d'un nouveau capteur"
-    );
-  });
+        // Calling the router function
+        await router();
+
+        // Expecting the add sensor title to match the specific text
+        expect(getByTestId(document.body, "add-sensor-title")).toHaveTextContent("Ajout d'un nouveau capteur");
+    });
 });
